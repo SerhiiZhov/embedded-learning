@@ -1,41 +1,41 @@
-# Шаблон проекта ESP32
+# Шаблон проєкту ESP32
 
-Заготовка для новых проектов на ESP-IDF. Работает с ESP32-C3 Super Mini, ESP32-S3 и обычной ESP32.
+Заготовка для нових проєктів на ESP-IDF. Працює з ESP32-C3 Super Mini, ESP32-S3 і звичайною ESP32.
 
-## Новый проект
+## Новий проєкт
 
 ```bash
 cd ~/work/esp32-template
 make new-project NAME=traffic-light
 ```
 
-Появится папка `~/work/traffic-light` — копия шаблона со своим именем. Открой её в Cursor (**File → Open Folder**) и выполни `make build`.
-Сам шаблон не трогай: правь уже созданные из него проекты.
+З'явиться папка `~/work/traffic-light` — копія шаблону зі своїм іменем. Відкрий її в Cursor (**File → Open Folder**) і виконай `make build`.
+Сам шаблон не чіпай: редагуй уже створені з нього проєкти.
 
-## Команды
+## Команди
 
-| Команда | Что делает |
+| Команда | Що робить |
 |---|---|
-| `make build` | собрать |
-| `make flash` | залить в плату |
-| `make monitor` | смотреть `printf` с платы (выход: **Ctrl+]** в английской раскладке) |
-| `make run` | залить и сразу смотреть |
-| `make clean` | удалить всё собранное |
-| `make chip CHIP=esp32` | переключить проект на другой чип (`esp32`, `esp32c3` или `esp32s3`) |
+| `make build` | зібрати |
+| `make flash` | залити в плату |
+| `make monitor` | дивитися `printf` з плати (вихід: **Ctrl+]** в англійській розкладці) |
+| `make run` | залити й одразу дивитися |
+| `make clean` | видалити все зібране |
+| `make chip CHIP=esp32` | переключити проєкт на інший чип (`esp32`, `esp32c3` або `esp32s3`) |
 
-В Cursor: **Cmd+Shift+B** — собрать; **Cmd+Shift+P → Tasks: Run Task → flash and monitor** — залить и смотреть.
+У Cursor: **Cmd+Shift+B** — зібрати; **Cmd+Shift+P → Tasks: Run Task → flash and monitor** — залити й дивитися.
 
 ## Структура
 
 ```
-├── main/main.c          ← твоя программа, начинается с app_main()
-├── sdkconfig.defaults   ← чип по умолчанию
-└── Makefile             ← команды make
+├── main/main.c          ← твоя програма, починається з app_main()
+├── sdkconfig.defaults   ← чип за замовчуванням
+└── Makefile             ← команди make
 ```
 
-## Как добавить свой модуль
+## Як додати свій модуль
 
-Создай папку `components/button/` с файлами `button.c`, `button.h` и `CMakeLists.txt`:
+Створи папку `components/button/` з файлами `button.c`, `button.h` і `CMakeLists.txt`:
 
 ```cmake
 idf_component_register(SRCS "button.c"
@@ -43,11 +43,11 @@ idf_component_register(SRCS "button.c"
                        PRIV_REQUIRES esp_driver_gpio)
 ```
 
-- `SRCS` — все `.c` файлы модуля.
-- `PRIV_REQUIRES` — какие части ESP-IDF модуль использует внутри (`esp_driver_gpio` — пины). Если сборка пишет, что не находит заголовок, чаще всего сюда нужно добавить компонент.
+- `SRCS` — усі `.c` файли модуля.
+- `PRIV_REQUIRES` — які частини ESP-IDF модуль використовує всередині (`esp_driver_gpio` — піни). Якщо збірка пише, що не знаходить заголовок, найчастіше сюди потрібно додати компонент.
 
-Потом в `main.c`: `#include "button.h"`. Больше ничего регистрировать не нужно: ESP-IDF сам находит все папки в `components/`.
+Потім у `main.c`: `#include "button.h"`. Більше нічого реєструвати не потрібно: ESP-IDF сам знаходить усі папки в `components/`.
 
-## Подсказки в редакторе
+## Підказки в редакторі
 
-Подсказки clangd появятся после первого `make build`: он берёт настройки из папки `build`.
+Підказки clangd з'являться після першого `make build`: він бере налаштування з папки `build`.
