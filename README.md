@@ -51,3 +51,9 @@ idf_component_register(SRCS "button.c"
 ## Підказки в редакторі
 
 Підказки clangd з'являться після першого `make build`: він бере налаштування з папки `build`.
+
+## Де дивитися приклади й документацію
+
+- Приклади ESP-IDF: папка `esp-idf-examples` у дереві проєкту (посилання на `~/esp/esp-idf/examples`), окремим вікном: `make examples`. Початкові: `get-started/blink`, периферія: `peripherals/gpio`.
+- Довідник ESP-IDF для ESP32-S3: https://docs.espressif.com/projects/esp-idf/en/v6.0.3/esp32s3/ — API Reference → Peripherals (піни, UART, …), System → FreeRTOS (задачі, паузи), API Guides (статті: Watchdogs, FreeRTOS Overview).
+- Заголовки: `~/esp/esp-idf/components/<компонент>/include/`, у Cursor — Cmd+клік по імені функції.
